@@ -39,3 +39,8 @@ obj.*
 /bin.*
 *.vcxproj.FileListAbsolute.txt
 *.vcxprojAssemblyReference.cache
+
+conan.lock
+conanbuildinfo.txt
+conaninfo.txt
+graph_info.json
