@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.16)
+project(detours)
+
+add_library(detours STATIC src/detours.cpp
+        src/modules.cpp
+        src/disasm.cpp
+        src/image.cpp
+        src/creatwth.cpp
+        src/disolx86.cpp
+        src/disolx64.cpp
+        src/disolia64.cpp
+        src/disolarm.cpp
+        src/disolarm64.cpp)
+
+target_link_libraries(detours)
+
+install(DIRECTORY src
+        DESTINATION include
+        COMPONENT devel
+        FILES_MATCHING PATTERN "*.h")
+
+install(TARGETS detours
+        CONFIGURATIONS Debug
+        RUNTIME DESTINATION bin)
+
+install(TARGETS detours
+        CONFIGURATIONS Release
+        RUNTIME DESTINATION bin)
