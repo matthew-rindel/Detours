@@ -16,12 +16,6 @@ target_link_libraries(detours)
 
 file(GLOB HEADER_FILES src/*.h)
 
-add_custom_command(
-        TARGET detours
-        COMMAND ${CMAKE_COMMAND} copy
-        ${CMAKE_CURRENT_BINARY_DIR}/test/input.txt
-        ${CMAKE_SOURCE_DIR})
-
 add_custom_command(TARGET detours
         PRE_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/include
