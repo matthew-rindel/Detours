@@ -14,8 +14,26 @@ add_library(detours STATIC src/detours.cpp
 
 target_link_libraries(detours)
 
-install(DIRECTORY src
-        DESTINATION include
+file(GLOB HEADER_FILES src/*.h)
+
+add_custom_command(
+        TARGET detours
+        COMMAND ${CMAKE_COMMAND} copy
+        ${CMAKE_CURRENT_BINARY_DIR}/test/input.txt
+        ${CMAKE_SOURCE_DIR})
+
+add_custom_command(TARGET detours
+        PRE_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_SOURCE_DIR}/include
+        )
+
+add_custom_command(TARGET detours
+        PRE_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy ${HEADER_FILES} ${CMAKE_SOURCE_DIR}/include
+        )
+
+install(DIRECTORY include
+        DESTINATION .
         COMPONENT devel
         FILES_MATCHING PATTERN "*.h")
 
