@@ -1,8 +1,8 @@
 import os
 from conans import ConanFile, CMake, MSBuild, tools
 
-# TO add this to the local cache:
-# conan export . detours/4.0.1@darkstar/stable
+# To add this to the local cache:
+# conan export . detours/4.0.1@microsoft/stable
 
 class DetoursConanfile(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
